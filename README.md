@@ -1,12 +1,6 @@
 
 # Check List OS Hardening (Ubuntu)
 
- ## Always be Update
-
-```
-sudo apt update
-```
----
  ## Create User with "sudo" Privilage
 
 Always have some Template for Naming and Password for all Servers
