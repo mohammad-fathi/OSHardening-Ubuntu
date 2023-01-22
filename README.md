@@ -1,6 +1,12 @@
 
 # Check List OS Hardening (Ubuntu)
 
+ ## Always be Update
+
+```
+sudo apt update
+```
+---
  ## Create User with "sudo" Privilage
 
 Always have some Template for Naming and Password for all Servers
@@ -16,7 +22,11 @@ sudo usermod -aG sudo smilelogin
 awk -F: '($3 == "0") {print}' /etc/passwd
 ```
 
-
+---
+ ## Disable USer root
+ ```
+sudo passwd -l root
+ ```
 ---
  ## Disable SSH root login 
 
