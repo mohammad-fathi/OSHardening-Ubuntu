@@ -23,7 +23,7 @@ awk -F: '($3 == "0") {print}' /etc/passwd
 ```
 
 ---
- ## Disable USer root
+ ## Disable User root
  ```
 sudo passwd -l root
  ```
