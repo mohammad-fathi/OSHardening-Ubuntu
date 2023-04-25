@@ -9,11 +9,11 @@ sudo apt update
 ---
  ## Create User with "sudo" Privilage
 
-Always have some Template for Naming and Password for all Servers
+Create Template User for all Servers
 
 ```
-sudo adduser smilelogin -p YOUR_PASSWORD
-sudo usermod -aG sudo smilelogin
+sudo adduser easybuntu -p YOUR_PASSWORD
+sudo usermod -aG sudo easybuntu
 ```
 ---
 ## Non-Root Accounts Does't Have UID 0
