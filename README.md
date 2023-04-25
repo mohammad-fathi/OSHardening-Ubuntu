@@ -47,18 +47,24 @@ sudo service ssh restart
 enable public key authentication.
 
 1. Generate SSH Key in Client
-2. Copy Public Key to Server you want ssh 
-3. Disable Password Authentication in SSH Config file
 
 ```
 ssh-keygen -t rsa -b 4096
+```
+3. Copy Public Key to SSH Remote Server 
+
+```
 ssh-copy-id -i ~/.ssh/id_rsa.pub USER_NAME@IP_SERVER
+```
+5. Disable Password Authentication in SSH Config file
+
+```
 sed -i 's/.*PasswordAuthentication.*/PasswordAuthentication no/g' /etc/ssh/sshd_config
 systemctl restart ssh
 ```
 ---
  ## Fail2Ban
-Fail2Ban is a Service for Securing SSH Authentication. if anyone want SSH to Server and Enter worng Password for many times Fail2Ban Service Blocked Source IP Address for a few hours.
+Fail2Ban is a Service for Securing SSH Authentication.If someone wants to ssh into the server and Enter worng Password for many times Fail2Ban Service, blocked client IP for several hours.
 ```
 apt-get install fail2ban -y
 
