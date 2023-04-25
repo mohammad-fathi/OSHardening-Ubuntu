@@ -1,7 +1,7 @@
 
 # Check List OS Hardening (Ubuntu)
 
- ## Always be Update
+ ## Update Ubuntu
 
 ```
 sudo apt update
