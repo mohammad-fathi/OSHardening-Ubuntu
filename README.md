@@ -51,12 +51,12 @@ enable public key authentication.
 ```
 ssh-keygen -t rsa -b 4096
 ```
-3. Copy Public Key to SSH Remote Server 
+2. Copy Public Key to SSH Remote Server 
 
 ```
 ssh-copy-id -i ~/.ssh/id_rsa.pub USER_NAME@IP_SERVER
 ```
-5. Disable Password Authentication in SSH Config file
+3. Disable Password Authentication in SSH Config file
 
 ```
 sed -i 's/.*PasswordAuthentication.*/PasswordAuthentication no/g' /etc/ssh/sshd_config
