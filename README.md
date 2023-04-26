@@ -77,7 +77,7 @@ enable public key authentication.
 ```
 ssh-keygen -t rsa -b 4096
 ```
-2. Copy Public Key to SSH Remote Server 
+2. Copy Client Public Key to Server 
 
 ```
 ssh-copy-id -i ~/.ssh/id_rsa.pub USER_NAME@IP_SERVER
