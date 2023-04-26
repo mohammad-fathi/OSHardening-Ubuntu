@@ -10,7 +10,7 @@ apt-get update
 apt-get upgrade -y
 apt-get dist-upgrade -y
 ```
-## Set Hostname And Host file
+## Set hostname and hosts file
 ```
 hostnamectl set-hostname YOURHOSTNAME
 sudo systemctl restart systemd-resolved
