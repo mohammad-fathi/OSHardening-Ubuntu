@@ -10,6 +10,19 @@ apt-get update
 apt-get upgrade -y
 apt-get dist-upgrade -y
 ```
+## Set Hostname And Host file
+```
+hostnamectl set-hostname YOURHOSTNAME
+sudo systemctl restart systemd-resolved
+cat <<EOF >> /etc/hosts
+127.0.0.1   $(hostname)
+EOF
+```
+## Non-Root Accounts Does't Have UID 0
+
+```
+awk -F: '($3 == "0") {print}' /etc/passwd
+```
 ---
  ## Create User with "sudo" Privilage
 
@@ -20,17 +33,25 @@ sudo adduser easybuntu -p YOUR_PASSWORD
 sudo usermod -aG sudo easybuntu
 ```
 ---
-## Non-Root Accounts Does't Have UID 0
-
-```
-awk -F: '($3 == "0") {print}' /etc/passwd
-```
-
----
  ## Disable User root
  ```
 sudo passwd -l root
  ```
+ 
+## Firewall
+block most outgoing/incoming ports except for updates and SSH 
+
+```
+sudo ufw allow in 53 && sudo ufw allow out 53
+sudo ufw allow in 53/udp && sudo ufw allow out 53/udp
+sudo ufw allow ssh
+sudo ufw allow out http
+sudo ufw allow out https
+sudo ufw default outgoing deny
+sudo ufw default incoming deny
+sudo ufw enable
+```
+
 ---
  ## Disable SSH root login 
 
@@ -68,7 +89,32 @@ sed -i 's/.*PasswordAuthentication.*/PasswordAuthentication no/g' /etc/ssh/sshd_
 systemctl restart ssh
 ```
 
-## 
+## IP Spoofing protection
+```
+cat <<EOF >> /etc/host.conf
+order bind,hosts
+nospoof on
+EOF
+cat <<EOF >> /etc/sysctl.conf
+net.ipv4.conf.default.rp_filter = 1
+net.ipv4.conf.all.rp_filter = 1
+EOF
+sudo sysctl -p
+```
+## Ignore ICMP broadcast requests
+```
+cat <<EOF >> /etc/sysctl.conf
+net.ipv4.icmp_echo_ignore_broadcasts = 1
+EOF
+sudo sysctl -p
+```
+## Secure Shared Memory
+```
+cat <<EOF >> /etc/fstab
+tmpfs	/run/shm	tmpfs	ro,noexec,nosuid	0 0
+EOF
+sudo mount -a
+```
 ---
  ## Fail2Ban
 Fail2Ban is a Service for Securing SSH Authentication.If someone wants to ssh into the server and Enter worng Password for many times Fail2Ban Service, blocked client IP for several hours.
