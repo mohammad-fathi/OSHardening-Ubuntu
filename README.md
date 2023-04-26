@@ -108,6 +108,15 @@ net.ipv4.icmp_echo_ignore_broadcasts = 1
 EOF
 sudo sysctl -p
 ```
+## Disable IPv6
+```
+cat <<EOF >> /etc/sysctl.conf
+# Disable IPv6
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+EOF
+sudo sysctl -p
+```
 ## Secure Shared Memory
 ```
 cat <<EOF >> /etc/fstab
@@ -115,6 +124,15 @@ tmpfs	/run/shm	tmpfs	ro,noexec,nosuid	0 0
 EOF
 sudo mount -a
 ```
+## Memory randomization
+> NOTE: Some application may not work properly with memory randomization
+```
+cat <<EOF >> /etc/sysctl.conf
+kernel.randomize_va_space = 2
+EOF
+sudo sysctl -p
+```
+ 
 ---
  ## Fail2Ban
 Fail2Ban is a Service for Securing SSH Authentication.If someone wants to ssh into the server and Enter worng Password for many times Fail2Ban Service, blocked client IP for several hours.
