@@ -1,7 +1,8 @@
 
 # Check List OS Hardening (Ubuntu)
+The least you can do for os hardening
 
- ## Update Ubuntu
+## Update Ubuntu
 
 ```
 apt-get clean
@@ -12,7 +13,7 @@ apt-get dist-upgrade -y
 ---
  ## Create User with "sudo" Privilage
 
-Create Template User for all Servers
+Create Template User for all Servers and set Strong Password
 
 ```
 sudo adduser easybuntu -p YOUR_PASSWORD
@@ -47,6 +48,7 @@ sudo service ssh restart
 ```
 ---
  ## Passwordless authentication on SSH
+
 enable public key authentication.
 
 1. Generate SSH Key in Client
