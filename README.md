@@ -4,7 +4,10 @@
  ## Update Ubuntu
 
 ```
-sudo apt update
+apt-get clean
+apt-get update
+apt-get upgrade -y
+apt-get dist-upgrade -y
 ```
 ---
  ## Create User with "sudo" Privilage
@@ -62,6 +65,8 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub USER_NAME@IP_SERVER
 sed -i 's/.*PasswordAuthentication.*/PasswordAuthentication no/g' /etc/ssh/sshd_config
 systemctl restart ssh
 ```
+
+## 
 ---
  ## Fail2Ban
 Fail2Ban is a Service for Securing SSH Authentication.If someone wants to ssh into the server and Enter worng Password for many times Fail2Ban Service, blocked client IP for several hours.
