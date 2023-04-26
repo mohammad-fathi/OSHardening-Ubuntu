@@ -45,8 +45,8 @@ block most outgoing/incoming ports except for updates and SSH
 sudo ufw allow in 53 && sudo ufw allow out 53
 sudo ufw allow in 53/udp && sudo ufw allow out 53/udp
 sudo ufw allow ssh
-sudo ufw allow out http
-sudo ufw allow out https
+sudo ufw allow http
+sudo ufw allow https
 sudo ufw default outgoing deny
 sudo ufw default incoming deny
 sudo ufw enable
